@@ -1,7 +1,7 @@
 import pyodbc, getpass
 
-def connect(driver, server, port, db, uid, pwd):
-    cnxnStr = "DRIVER=" + driver + ";SERVER=" + server + ";PORT=" + port + ";DATABASE=" + db + ";UID=" + uid + ";PWD=" + pwd
+def connect(dic):
+    cnxnStr = "DRIVER=" + dic['driver'] + ";SERVER=" + dic['server'] + ";PORT=" + dic['port'] + ";DATABASE=" + dic['database'] + ";UID=" + dic['user'] + ";PWD=" + getpass.getpass()
     cnxn = pyodbc.connect(cnxnStr)
     cnxn.setdecoding(pyodbc.SQL_WCHAR, encoding='utf-8')
     cnxn.setencoding(str, encoding='utf-8')
@@ -25,5 +25,8 @@ def linecount(cnxn):
         print(r[0] + "," + r[1] + "," + r[2] + "," + str(x[0]))
         #break
 
-c = connect("FreeTDS", "haldexcommerce.cloudapp.net", "57500", "HaldexCommerce", "gabor", getpass.getpass())
-linecount(c)
+def promptForParameter(prompt):
+    return raw_input(prompt)
+
+#c = connect("FreeTDS", "haldexcommerce.cloudapp.net", "57500", "HaldexCommerce", "gabor")
+#linecount(c)
