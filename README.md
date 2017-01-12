@@ -17,7 +17,7 @@ Driver=/location/of/driver
 Setup=/location/of/driver
 UsageCount=1
 ```
-Usage count defines the max number of collections allowed (I think).
+Usage count defines the max number of connections allowed (I think).
 ### Scripts
 Each script can be called with the following options:
 

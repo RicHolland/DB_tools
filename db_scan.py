@@ -47,6 +47,7 @@ def linecount(cnxn):
     cursor.tables()
     rows = cursor.fetchall()
     for r in rows:
+        #TODO Currently hardcoded for MS SQL
         if (r[1] != u'dbo'):
             continue
         cursor.execute("SELECT count(*) FROM {0}.{1}.{2}".format(r[0], r[1], r[2]))
