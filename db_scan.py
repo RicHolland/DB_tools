@@ -1,13 +1,21 @@
 import pyodbc, getpass, argparse
 
 def getParameters():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description='''Parameters to connect to SQL database. Any missing values
+        required will be prompted for.'''
+    )
 
-    parser.add_argument('-d', '--driver', dest='driver')
-    parser.add_argument('-s', '--server', dest='server')
-    parser.add_argument('-p', '--port', dest='port')
-    parser.add_argument('-b', '--database', dest='database')
-    parser.add_argument('-u', '--user', dest='user')
+    parser.add_argument('-d', '--driver', dest='driver',
+        help='ODBC driver to be used')
+    parser.add_argument('-s', '--server', dest='server',
+        help='Host server of database')
+    parser.add_argument('-p', '--port', dest='port',
+        help='Connection port to server')
+    parser.add_argument('-b', '--database', dest='database',
+        help='Database or schema to connect to')
+    parser.add_argument('-u', '--user', dest='user',
+        help='User on server with access to database')
 
     args = vars(parser.parse_args())
 
